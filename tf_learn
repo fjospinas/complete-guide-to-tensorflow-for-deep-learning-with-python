@@ -1,0 +1,16 @@
+* Operation Overloading is done for tensor ops (nodes)
+* Keras is in tf2.0
+* Eager execution vs Graph execution (Need of eager exec after pytorch)
+** Method to convert eager to graph -> graph_func = tf.Function(eager_func)
+* tf.compat.v1 to use function / classes from tf1.0 in tf2.0
+* tf.compat.v1.train.optimizer.minimize(loss)
+** loss is the tensor, which has connections to y, y_pred in graph, thus to all the weights in the model
+** from the graph, tf knows the weights which needs to be adjusted using gradent descent, or you can also give the list of parameters
+** first step is to calculate all the gradients (using tf.gradienttape); tape.gradient(y, x) gives dy/dx, we use tape.gradient(loss, params)
+** second step is to apply these gradients (optimizer.apply_gradient(zip(grad, params))) to adjust these params / weights
+* tf.Estimator - high level api, provides functions for train, eval, prdeict
+** you can also build custom estimator from the keras model usning tf.keras.estimator.model_to_estimator (check once)
+* tf.cast(np_array)
+* tf.nn.sigmoid
+* tf
+
